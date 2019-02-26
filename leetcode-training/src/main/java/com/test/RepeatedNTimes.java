@@ -1,5 +1,7 @@
 package com.test;
 
+import java.util.PriorityQueue;
+
 public class RepeatedNTimes {
 	public static void main(String[] args) {
 		int[] a = new int[]{1,2,3,3};
@@ -11,7 +13,14 @@ public class RepeatedNTimes {
 	}
 	
 	public static int repeatedNTimes(int[] A) {
-		
-		return 0;
+		PriorityQueue<Integer> queue = new PriorityQueue<>();
+		int i = 0;
+		for(;i < A.length;i++) {
+			if(queue.contains(A[i])) {
+				break;
+			}
+			queue.add(A[i]);
+		}
+		return A[i];
 	}
 }
