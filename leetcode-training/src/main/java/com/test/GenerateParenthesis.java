@@ -15,11 +15,18 @@ public class GenerateParenthesis {
 	
 	public static List<String> generateParenthesis(int n) {
 		List<String> res = new ArrayList<>();
+		int len = n * 2;
 		return res;
 	}
 	
-	public static String function(String a, int n){
-		
-		return "";
+	public static List<String> function(String a, int len, List<String> res){
+		if(len <= 2) {
+			
+			return null;
+		}else {
+			a = a + "(";
+			len = len - 2;
+		}
+		return null;
 	}
 }
