@@ -7,3 +7,11 @@ where area>3000000 or population>25000000;
 select Email
 from Person
 group by Email having count(Email)>1;
+
+
+-- 有趣的电影
+select *
+from cinema
+where description <> 'boring'
+having id % 2 = 1
+order by rating desc;
