@@ -29,22 +29,36 @@ public class InvertTree {
 		System.out.println(res);
 	}
 	
+	/**
+	 * @description 每个节点的左右节点交换，依次递归
+	 */
 	public static TreeNode invertTree(TreeNode root) {
-		Stack<TreeNode> s = new Stack<>();
-		Deque<TreeNode> q = new LinkedList<>();
-		s.push(root);
-		TreeNode pos = root;
-		TreeNode tmp = root;
-		while(!s.isEmpty()) {
-			while(!s.isEmpty()) {
-				q.offer(s.pop());
-			}
-			if(q.size() > 1) {
-				
-			}else {
-				
-			}
+		if(root == null) {
+			return null;
+		}
+		if(root.left != null && root.right != null) {
+			TreeNode left = root.left;
+			TreeNode right = root.right;
+			root.left = invertTree(right);
+			root.right = invertTree(left);
+		}else if(root.left != null && root.right == null) {
+			root.right = invertTree(root.left);
+			root.left = null;
+		}else if(root.left == null && root.right != null) {
+			root.left = invertTree(root.right);
+			root.right = null;
 		}
 		return root;
+	}
+	
+	public static TreeNode invertTree1(TreeNode root) {
+		if(root == null) {
+			return null;
+		}else {
+			TreeNode left = root.left;
+			root.left = invertTree1(root.right);
+			root.right = invertTree1(left);
+			return root;
+		}
 	}
 }
