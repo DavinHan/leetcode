@@ -15,3 +15,8 @@ from cinema
 where description <> 'boring'
 having id % 2 = 1
 order by rating desc;
+
+-- 组合两个表 左外连接
+select FirstName,LastName, City,State
+from Person left join Address
+on Person.PersonId = Address.PersonId;
