@@ -3,9 +3,9 @@ package com.test.easy;
 public class CanWinNim {
 	
 	public static void main(String[] args) {
-		System.out.println(new CanWinNim().canWinNim1(4));		//false
-		System.out.println(new CanWinNim().canWinNim1(5));		//true
-		System.out.println(new CanWinNim().canWinNim1(47));		//true
+		System.out.println(new CanWinNim().canWinNim(4));		//false
+		System.out.println(new CanWinNim().canWinNim(5));		//true
+		System.out.println(new CanWinNim().canWinNim(47));		//true
 	}
 
 	/**
@@ -29,32 +29,9 @@ public class CanWinNim {
     }
 	
 	/**
-	 * @description 堆栈溢出
+	 * @description 巴什博弈：n % (m + 1) == 0时，先手的会赢
 	 */
-	@Deprecated
-	public boolean canWinNim2(int n) {
-		boolean isYou = true;
-		if(n <= 3) {
-			return isYou;
-		}
-		Boolean[] win = new Boolean[n];
-		win[0] = isYou;
-		win[1] = isYou;
-		win[2] = isYou;
-		isYou = false;
-		for(int i = 3;i < n;i++) {
-			win[i] = win[i - 1] && win[i - 2] && win[i - 3] && isYou;
-			if(isYou == true) {
-				isYou = false;
-			}else {
-				isYou = true;
-			}
-		}
-		return win[n - 1];
-	}
-	
 	public boolean canWinNim(int n) {
-		
-		return true;
+		return n % 4 != 0;
 	}
 }
