@@ -3,11 +3,13 @@ package com.test.easy;
 public class CanWinNim {
 	
 	public static void main(String[] args) {
-		System.out.println(new CanWinNim().canWinNim2(5));
+		System.out.println(new CanWinNim().canWinNim1(4));		//false
+		System.out.println(new CanWinNim().canWinNim1(5));		//true
+		System.out.println(new CanWinNim().canWinNim1(47));		//true
 	}
 
 	/**
-	 * @description 堆栈溢出
+	 * @description 时间超出
 	 */
 	@Deprecated
 	public boolean canWinNim1(int n) {
@@ -18,7 +20,11 @@ public class CanWinNim {
 		if(n <= 3) {
 			return isYou;
 		}else {
-			return function(n - 1, !isYou) && function(n - 2, !isYou) && function(n - 3, !isYou);
+			if(isYou) {
+				return function(n - 1, !isYou) || function(n - 2, !isYou) || function(n - 3, !isYou);
+			}else {
+				return function(n - 1, !isYou) && function(n - 2, !isYou) && function(n - 3, !isYou);
+			}
 		}
     }
 	
