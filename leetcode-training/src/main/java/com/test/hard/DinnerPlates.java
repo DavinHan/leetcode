@@ -1,6 +1,5 @@
 package com.test.hard;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -91,29 +90,71 @@ public class DinnerPlates {
     public void push(int val) {
         // 1. 判断已有链路中是否有空位，有则塞入；没有则新建链路节点
         for (int i = 0;i < len;i++) {
-
+            int aLen = stackSize.get(i);
+            if (aLen < capacity) {
+                int[] a = stack.get(i);
+                a[aLen] = val;
+                stackSize.add(i, aLen + 1);
+                return;
+            }
         }
         len++;
         int[] a = new int[capacity];
-        stack.add(len, a);
-        stackSize.add(len, 1);
-        a[stackSize.get(len) - 1] = val;
+        stack.add(len - 1, a);
+        stackSize.add(len - 1, 1);
+        a[stackSize.get(len - 1) - 1] = val;
     }
 
     public int pop() {
-        return 0;
+        if(len > 0) {
+            if (stackSize.get(len - 1) > 1) {
+                int aLen = stackSize.get(len - 1);
+                stackSize.add(len - 1, aLen - 1);
+                return stack.get(len - 1)[aLen - 1];
+            } else {
+                len--;
+                stackSize.add(len, 0);
+                return stack.get(len)[0];
+            }
+        }else {
+            return -1;
+        }
     }
 
     public int popAtStack(int index) {
-        return 0;
+        for(int i = 0;i < len;i++) {
+            int aLen = stackSize.get(i);
+            if(aLen >= index) {
+                stackSize.add(i, aLen - 1);
+                if(aLen - 1 == 0) {
+                    len--;
+                }
+                return stack.get(i)[stackSize.get(i)];
+            }
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
-        String as = "asdasd";
-        if(as.contains(null)) {
-            System.out.println("asd");
-        }else {
-            System.out.println("qqq");
-        }
+        DinnerPlates obj = new DinnerPlates(2);
+        obj.push(1);
+        obj.push(2);
+        obj.push(3);
+        obj.push(4);
+        obj.push(5);
+        obj.push(6);
+        obj.push(7);
+        System.out.println(obj.popAtStack(0));
+        obj.push(20);
+        obj.push(21);
+        System.out.println(obj.popAtStack(0));
+        System.out.println(obj.popAtStack(2));
+        System.out.println(obj.pop());
+        System.out.println(obj.pop());
+        System.out.println(obj.pop());
+        System.out.println(obj.pop());
+        System.out.println(obj.pop());
+        System.out.println(obj.pop());
+        System.out.println(obj.pop());
     }
 }
