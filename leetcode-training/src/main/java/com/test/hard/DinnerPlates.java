@@ -1,6 +1,6 @@
 package com.test.hard;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 //我们把无限数量 ∞ 的栈排成一行，按从左到右的次序从 0 开始编号。每个栈的的最大容量 capacity 都相同。
@@ -73,8 +73,8 @@ import java.util.List;
 
 public class DinnerPlates {
 
-    private List<int[]> stack = new LinkedList<>();
-    private List<Integer> stackSize = new LinkedList<>();
+    private List<int[]> stack = new ArrayList<>();
+    private List<Integer> stackSize = new ArrayList<>();
     // 每个链路节点上的最大值
     int capacity = 0;
     // 链路实际长度
