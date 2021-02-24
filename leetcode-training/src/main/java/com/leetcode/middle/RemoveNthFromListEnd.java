@@ -1,5 +1,7 @@
 package com.leetcode.middle;
 
+import com.leetcode.common.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,18 +71,5 @@ public class RemoveNthFromListEnd {
         r1.next.next.next = new ListNode(4);
         r1.next.next.next.next = new ListNode(5);
         System.out.println(removeNthFromEnd(r1, 5));
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-
-    @Override
-    public String toString() {
-        return val + (next == null ? "" : ", " + this.next.toString());
     }
 }

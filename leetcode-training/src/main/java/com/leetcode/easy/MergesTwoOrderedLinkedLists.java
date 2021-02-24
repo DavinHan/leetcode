@@ -1,5 +1,7 @@
 package com.leetcode.easy;
 
+import com.leetcode.common.ListNode;
+
 /**
  * merge two ordered linked list into one
  */
@@ -40,18 +42,5 @@ public class MergesTwoOrderedLinkedLists {
         l2.next = new ListNode(3);
         l2.next.next = new ListNode(4);
         System.out.println(mergeTwoLists(l1, l2));
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-
-    @Override
-    public String toString() {
-        return this.val + (this.next == null ? null : ", " + this.next.toString());
     }
 }

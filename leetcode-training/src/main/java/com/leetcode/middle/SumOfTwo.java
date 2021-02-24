@@ -1,22 +1,11 @@
 package com.leetcode.middle;
 
+import com.leetcode.common.ListNode;
+
 /**
  * find the sum of two list.
  */
 public class SumOfTwo {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-
-        @Override
-        public String toString() {
-            return val + (next == null ? "" : next.toString());
-        }
-    }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode root = new ListNode();
