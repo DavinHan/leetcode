@@ -1,6 +1,6 @@
 package com.leetcode.middle;
 
-public class JumpWithLeastTimes {
+    public class JumpWithLeastTimes {
 
     /**
      * Greedy Algorithm
@@ -9,11 +9,11 @@ public class JumpWithLeastTimes {
         int len = nums.length - 1;
         int end = 0;
         int paths = 0;
-        int maxPosition = 0;
+        int farthestDistance = 0;
         for(int i = 0;i < len;i++) {
-            maxPosition = Math.max(maxPosition, nums[i] + i);
+            farthestDistance = Math.max(farthestDistance, nums[i] + i);
             if(i == end) {
-                end = maxPosition;
+                end = farthestDistance;
                 paths++;
             }
         }
