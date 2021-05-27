@@ -9,6 +9,7 @@ com\leetcode\common\ListNode.class
 com\test\other\有序数组的平方.class
 com\leetcode\difficult\LongestValidParentheses.class
 com\leetcode\middle\FindSumOfThreeNearTarget.class
+com\agent\staticlly\method\MethodTimeConsuming.class
 com\test\other\DeckRevealedIncreasing.class
 com\test\other\FlipAndInvertImage.class
 com\test\hard\PostorderTraversal.class
@@ -35,11 +36,11 @@ com\test\other\HammingDistance.class
 com\test\other\MaxIncreaseToKeepCitySkyline.class
 com\swordOffer\binaryTree\RebuildBinaryTree.class
 com\test\middle\Combine.class
+com\agent\staticlly\MyAgent.class
 com\test\other\TypeErasureTest.class
 com\test\other\Codec.class
 com\test\other\UniqueEmailAddress.class
 com\leetcode\difficult\StringMatching.class
-com\agent\staticlly\WatchClasses.class
 com\test\easy\Preorder.class
 com\test\hard\StaticResource.class
 com\leetcode\middle\SumOfTwo.class

@@ -21,6 +21,7 @@ D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\middle\BarrelPri
 D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\easy\SearchOrInsertInArray.java
 D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\middle\GenerateNGroupParenthesis.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\other\JewelsAndStones.java
+D:\gitProject\test\leetcode-training\src\main\java\com\agent\staticlly\MyAgent.java
 D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\easy\MaxSumOfSubArray.java
 D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\middle\SearchTargetInFlipArray.java
 D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\easy\MergesTwoOrderedLinkedLists.java
@@ -50,7 +51,6 @@ D:\gitProject\test\leetcode-training\src\main\java\com\test\other\UniqueMorseRep
 D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\easy\LongestPublicPrefix.java
 D:\gitProject\test\leetcode-training\src\main\java\com\swordOffer\backtrackingAlgorithm\PathInMatrix.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\easy\RomanToInt.java
-D:\gitProject\test\leetcode-training\src\main\java\com\agent\staticlly\WatchClasses.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\easy\TheSumOfTwoNumbers.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\other\GenerateParenthesis.java
 D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\easy\RemoveDuplicatesElementInArray.java
@@ -87,6 +87,7 @@ D:\gitProject\test\leetcode-training\src\main\java\com\test\middle\TranslateStri
 D:\gitProject\test\leetcode-training\src\main\java\com\leetcode\common\ListNode.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\middle\PruneTree.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\other\RepeatedNTimes.java
+D:\gitProject\test\leetcode-training\src\main\java\com\agent\staticlly\method\MethodTimeConsuming.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\easy\CheckPossibility.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\other\Codec.java
 D:\gitProject\test\leetcode-training\src\main\java\com\test\other\DeckRevealedIncreasing.java

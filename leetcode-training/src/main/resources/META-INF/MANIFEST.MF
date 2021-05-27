@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Premain-Class: com.agent.staticlly.WatchClasses
+Premain-Class: com.agent.staticlly.MyAgent
 Can-Redefine-Classes: true
