@@ -70,7 +70,7 @@ public class MyJavassistBuilder {
 
         // 7. 将这个创建的类对象编译为.class文件
         try {
-            ctClass.writeFile("D:\\gitProject\\test\\leetcode-training\\");
+            ctClass.writeFile(".\\leetcode-training\\src\\main\\java\\");
         } catch (CannotCompileException | IOException e) {
             e.printStackTrace();
         }
