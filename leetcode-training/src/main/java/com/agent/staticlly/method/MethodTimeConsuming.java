@@ -56,14 +56,13 @@ public class MethodTimeConsuming implements ClassFileTransformer {
                     CtMethod newMethod = CtNewMethod.copy(ctMethod, method, ctClass, null);
 
                     // 构建新的方法体
-                    StringBuilder methodBodyStr = new StringBuilder();
-                    methodBodyStr.append("{");
-                    methodBodyStr.append("\nlong startTime = System.currentTimeMillis();\n");
-                    methodBodyStr.append(newMethodName + "($$);\n");// 调用原有代码，类似于method();($$)表示所有的参数
-                    methodBodyStr.append("\nlong endTime = System.currentTimeMillis();\n");
-                    methodBodyStr.append("\nSystem.out.println(\"监控信息(执行耗时)：" + className + "." + method + " => \" +(endTime - startTime) +\"毫秒\");");
-                    methodBodyStr.append("}");
-                    newMethod.setBody(methodBodyStr.toString());// 替换新方法
+                    String methodBodyStr = "{" +
+                            "\nlong startTime = System.currentTimeMillis();\n" +
+                            newMethodName + "($$);\n" +// 调用原有代码，类似于method();($$)表示所有的参数
+                            "\nlong endTime = System.currentTimeMillis();\n" +
+                            "\nSystem.out.println(\"监控信息(执行耗时)：" + className + "." + method + " => \" +(endTime - startTime) +\"毫秒\");" +
+                            "}";
+                    newMethod.setBody(methodBodyStr);// 替换新方法
                     ctClass.addMethod(newMethod);         // 增加新方法
                 }
                 return ctClass.toBytecode();

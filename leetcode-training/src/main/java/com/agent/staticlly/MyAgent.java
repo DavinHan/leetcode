@@ -7,6 +7,12 @@ import java.util.Arrays;
 
 public class MyAgent {
 
+    /**
+     * 静态挂载（Static mount） 的入口方法
+     * VM options : -javaagent:D:\gitProject\test\leetcode-training\target\my-agent.jar=com.agent.demo.HelloWorld.mockTimeConsuming
+     * @param agentArgs com.agent.demo.HelloWorld.mockTimeConsuming
+     * @param inst null
+     */
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.printf("java-agent1 : agentArgs is %s, inst is %s", agentArgs, inst.toString());
 
