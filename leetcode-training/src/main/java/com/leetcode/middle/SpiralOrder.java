@@ -67,16 +67,16 @@ public class SpiralOrder {
         int rows = matrix.length, cols = matrix[0].length;
         int row = 0, col = 0;
         int len = rows * cols;
-        boolean[][] visited = new boolean[cols][rows];
+        boolean[][] visited = new boolean[rows][cols];
         for(int i = 0;i < len;i++) {
-            result.add(matrix[col][row]);
-            visited[col][row] = true;
-            int nextCol = col + directions[directionIndex][0], nextRow = row + directions[directionIndex][1];
-            if(nextCol < 0 || nextCol >= cols || nextRow < 0 || nextRow >= rows || visited[col][row]) {
+            result.add(matrix[row][col]);
+            visited[row][col] = true;
+            int nextRow = row + directions[directionIndex][0], nextCol = col + directions[directionIndex][1];
+            if(nextRow < 0 || nextRow >= rows || nextCol < 0 || nextCol >= cols || visited[nextRow][nextCol]) {
                 directionIndex = (directionIndex + 1) % 4;
             }
-            col += directions[directionIndex][0];
-            row += directions[directionIndex][1];
+            row += directions[directionIndex][0];
+            col += directions[directionIndex][1];
         }
         return result;
     }
