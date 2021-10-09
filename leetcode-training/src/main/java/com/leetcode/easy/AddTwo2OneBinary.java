@@ -1,8 +1,10 @@
 package com.leetcode.easy;
 
+import java.util.Arrays;
+
 public class AddTwo2OneBinary {
 
-    public static String addBinary(String a, String b) {
+    public static String addBinary1(String a, String b) {
         StringBuilder result = new StringBuilder();
         char[] aa = a.toCharArray();
         char[] bb = b.toCharArray();
@@ -67,8 +69,31 @@ public class AddTwo2OneBinary {
         return result.reverse().toString();
     }
 
+    public static String addBinary2(String a, String b) {
+        char[] resArr = new char[Math.max(a.length(), b.length()) + 1];
+        Arrays.fill(resArr, '0');
+        char[] maxArr = (a.length() > b.length() ? a : b).toCharArray();
+        char[] minArr = (a.length() <= b.length() ? a : b).toCharArray();
+        for (int i = 0;i < minArr.length;i++) {
+            resArr[resArr.length - i - 1] = minArr[minArr.length - i - 1];
+        }
+        int carry = 0;
+        for (int i = 0;i < maxArr.length;i++) {
+            int x = resArr[resArr.length - i - 1] == '0' ? 0 : 1;
+            int y = maxArr[maxArr.length - i - 1] == '0' ? 0 : 1;
+            resArr[resArr.length - i - 1] = (char) ( x ^ y ^ carry + 48);
+            // 若 resArr[i] = 0，则表示x和y同为1或同为0
+            carry = (x + y + carry) >> 1;
+        }
+        resArr[0] = carry == 1 ? '1' : ' ';
+        return new String(resArr).trim();
+    }
+
     public static void main(String[] args) {
-        System.out.println(addBinary("11", "1"));
-        System.out.println(addBinary("1010", "1011"));
+        System.out.println(addBinary1("11", "1"));
+        System.out.println(addBinary1("1010", "1011"));
+        System.out.println(addBinary2("11", "1"));
+        System.out.println(addBinary2("1010", "1011"));
+
     }
 }
