@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: purchaser
+  kafka:
+    bootstrap-servers: 172.20.58.95:19092
+  profiles:
+    active: test
+
+server:
+  servlet:
+    context-path: /purchaser
+  port: 8081
+
+
+
