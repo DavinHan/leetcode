@@ -30,3 +30,6 @@
 /demo-eureka-server/target/classes/
 /demo-eureka-server/demo-eureka-server.iml
 /hyan-demo.iml
+/demo-web-vendor-feign/target/
+**/target/**
+*/target/*

@@ -19,6 +19,7 @@
 		<module>demo-service</module>
         <module>demo-utils</module>
         <module>demo-web-vendor</module>
+        <module>demo-web-vendor-feign</module>
         <module>demo-web-purchaser</module>
         <module>demo-web-manufacturers</module>
         <module>demo-eureka-server</module>
