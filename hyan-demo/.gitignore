@@ -33,3 +33,4 @@
 /demo-web-vendor-feign/target/
 **/target/**
 */target/*
+/demo-web-vendor-feign/demo-web-vendor-feign.iml
