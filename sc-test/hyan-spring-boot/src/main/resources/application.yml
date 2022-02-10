@@ -1,0 +1,8 @@
+student:
+  name: Mike
+  age: 18
+  number: ${random.int}
+  uuid: ${random.uuid}
+  max: ${random.int(10)}
+  value: ${random.int}
+  greeting: hi,I'm ${student.name}
