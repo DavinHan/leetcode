@@ -29,4 +29,19 @@ public class HelloWorld {
         aFun();
         throw new RuntimeException("aa");
     }
+
+    @Test
+    public void testIf(){
+        int a = 0;
+        if(a == 0) {
+            a++;
+        } else if (a == 1) {
+            a++;
+        } else if (a == 2) {
+            a++;
+        } else {
+            a++;
+        }
+        System.out.println(a);
+    }
 }
