@@ -6,3 +6,13 @@ student:
   max: ${random.int(10)}
   value: ${random.int}
   greeting: hi,I'm ${student.name}
+
+spring:
+  profiles:
+    active: dev
+
+management:
+  security:
+    enabled: false
+  server:
+    port: 9091

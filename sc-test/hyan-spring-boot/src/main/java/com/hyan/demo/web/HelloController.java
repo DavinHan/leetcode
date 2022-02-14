@@ -1,6 +1,7 @@
 package com.hyan.demo.web;
 
 import com.hyan.demo.entity.Student;
+import com.hyan.demo.entity.Tom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -26,6 +27,9 @@ public class HelloController {
 
     @Autowired
     private Student student;
+
+    @Autowired
+    private Tom tom;
 
     @GetMapping("/index")
     public String index(){
