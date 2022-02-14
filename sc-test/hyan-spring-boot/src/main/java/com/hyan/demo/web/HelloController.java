@@ -2,6 +2,7 @@ package com.hyan.demo.web;
 
 import com.hyan.demo.entity.Student;
 import com.hyan.demo.entity.Tom;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -31,16 +32,19 @@ public class HelloController {
     @Autowired
     private Tom tom;
 
+    @ApiOperation(value = "根", notes = "根")
     @GetMapping("/index")
     public String index(){
         return "hello spring";
     }
 
+    @ApiOperation(value = "查询学生1")
     @GetMapping("/student1")
     public String student1(){
         return name + ":" + age;
     }
 
+    @ApiOperation(value = "查询学生2")
     @GetMapping("/student2")
     public String student2(){
         return student.toString();

@@ -7,18 +7,26 @@ student:
   value: ${random.int}
   greeting: hi,I'm ${student.name}
 
+
 spring:
-  profiles:
-    active: dev
   datasource:
     url: jdbc:mysql://${jdbcUrl}/${schema}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${username}
     password: ${password}
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 
 management:
   security:
     enabled: false
   server:
     port: 9091
-
+server:
+  port:
+  tomcat:
+    max-http-post-size: 9000000
+    uri-encoding: UTF-8
+    max-connections: 30000
