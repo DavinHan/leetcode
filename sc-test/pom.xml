@@ -6,6 +6,7 @@
     <modules>
         <module>hyan-spring-boot</module>
         <module>hyan-zuul</module>
+        <module>hyan-zuul-diy-gateway</module>
     </modules>
 
     <parent>
