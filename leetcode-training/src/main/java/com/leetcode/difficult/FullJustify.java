@@ -1,6 +1,7 @@
 package com.leetcode.difficult;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,36 +15,91 @@ import java.util.List;
 public class FullJustify {
 
     public static List<String> fullJustify(String[] words, int maxWidth) {
-        List<List<String>> wordList = new ArrayList<>();
-        int i = 0, len = words.length;
-        int tmpLen = 0;
-        List<String> tmpWords = new ArrayList<>();
-        wordList.add(tmpWords);
-        while(i < len) {
-            int wordLen = words[i].length();
-            if(tmpLen + wordLen <= maxWidth) {
-                if(tmpLen + wordLen + 1 < maxWidth) {
-                    tmpWords.add(words[i]);
-                    tmpLen += wordLen + 1;
-                    i++;
-                } else if (tmpLen + wordLen == maxWidth) {
-                    tmpWords.add(words[i]);
-                    tmpLen += wordLen;
-                    i++;
-                }
+        List<String> tmp = new ArrayList<>();
+        List<List<String>> sumStr = new ArrayList<>();
+        List<String> result = new ArrayList<>();
+        int sum = 0;
+        for(int i = 0;i < words.length;i++) {
+            if((i < words.length - 1 && sum + words[i].length() + 1 < maxWidth)
+                    || sum + words[i].length() < maxWidth) {
+                tmp.add(words[i]);
+                sum += words[i].length() + 1;
             } else {
-                tmpLen = 0;
-                tmpWords = new ArrayList<>();
-                wordList.add(tmpWords);
+                sumStr.add(tmp);
+                tmp = new ArrayList<>();
+                tmp.add(words[i]);
+                sum = words[i].length();
             }
         }
+        if(!sumStr.contains(tmp)) {
+            sumStr.add(tmp);
+        }
 
-        System.out.println(wordList);
-
-        List<String> result = new ArrayList<>();
-
-
-
+        for (int i = 0; i < sumStr.size(); i++) {
+            int wLen = 0;
+            List<String> strArr = sumStr.get(i);
+            for (int j = 0; j < strArr.size(); j++) {
+                wLen += strArr.get(j).length();
+                if(j != strArr.size() - 1) {
+                    wLen += 1;
+                }
+            }
+            if(strArr.size() == 1) {
+                StringBuilder sb = new StringBuilder(strArr.get(0));
+                char[] ch = new char[maxWidth - sb.length()];
+                Arrays.fill(ch, ' ');
+                sb.append(ch);
+                result.add(sb.toString());
+                continue;
+            }
+            int extra = (maxWidth - wLen) / (strArr.size() - 1);
+            int extraL = (maxWidth - wLen) % (strArr.size() - 1);
+            StringBuilder sb = new StringBuilder();
+            if(extraL == 0) {
+                for (int j = 0; j < strArr.size(); j++) {
+                    sb.append(strArr.get(j));
+                    if(i != sumStr.size() - 1) {
+                        if (j != strArr.size() - 1) {
+                            char[] ch = new char[extra + 1];
+                            Arrays.fill(ch, ' ');
+                            sb.append(ch);
+                        }
+                    } else {
+                        if(j != strArr.size() - 1) {
+                            sb.append(" ");
+                        } else {
+                            char[] ch = new char[maxWidth - sb.length()];
+                            Arrays.fill(ch, ' ');
+                            sb.append(ch);
+                        }
+                    }
+                }
+            } else {
+                for (int j = 0; j < strArr.size(); j++) {
+                    sb.append(strArr.get(j));
+                    if(i != sumStr.size() - 1) {
+                        if(j == 0) {
+                            char[] ch = new char[extraL + 1];
+                            Arrays.fill(ch, ' ');
+                            sb.append(ch);
+                        } else if (j != strArr.size() - 1) {
+                            char[] ch = new char[extra + 1];
+                            Arrays.fill(ch, ' ');
+                            sb.append(ch);
+                        }
+                    } else {
+                        if(j != strArr.size() - 1) {
+                            sb.append(" ");
+                        } else {
+                            char[] ch = new char[maxWidth - sb.length()];
+                            Arrays.fill(ch, ' ');
+                            sb.append(ch);
+                        }
+                    }
+                }
+            }
+            result.add(sb.toString());
+        }
         return result;
     }
 
