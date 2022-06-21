@@ -1,7 +1,5 @@
 package com.leetcode.common;
 
-import javax.validation.constraints.Min;
-
 public class ArrayUtil {
 
     public static String showArray(int[] arr) {
