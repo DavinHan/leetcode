@@ -18,19 +18,22 @@ public class DeleteDuplicates {
         r.next = head;
         ListNode p = r.next;
         ListNode pp = r;
+        int duplicateVal = r.val;
         while(p.next != null) {
-            if(p.val == pp.next.val) {
-                if(pp.next != p) {
+            if(p.next.val == pp.next.val) {
+                duplicateVal = p.next.val;
+                p.next = p.next.next;
+            } else {
+                if(duplicateVal == pp.next.val) {
                     pp.next = p.next;
+                } else {
+                    pp = pp.next;
                 }
                 p = p.next;
-            } else {
-                if(pp.next.next != p) {
-                    pp.next.next = p;
-                } else {
-                    pp.next = p;
-                }
             }
+        }
+        if(duplicateVal == pp.next.val) {
+            pp.next = p.next;
         }
         return r.next;
     }
@@ -51,6 +54,10 @@ public class DeleteDuplicates {
         head.next.next = new ListNode(1);
         head.next.next.next = new ListNode(2);
         head.next.next.next.next = new ListNode(3);
+        System.out.println(d.deleteDuplicates(head));
+
+        head = new ListNode(1);
+        head.next = new ListNode(1);
         System.out.println(d.deleteDuplicates(head));
     }
 }
