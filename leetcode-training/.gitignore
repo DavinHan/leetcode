@@ -1,6 +1,3 @@
-/leetcode-training.iml
-/target/**
-/.idea/**
-/target/
-/target/*
-/leetcode-training/target/
+leetcode-training.iml
+target/
+.idea
