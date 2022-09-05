@@ -1,5 +1,6 @@
 package com.test.config;
 
+import com.test.appRole.MyAppRoleAuthentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,16 +10,9 @@ import org.springframework.vault.authentication.AppRoleAuthenticationOptions;
 import org.springframework.vault.authentication.ClientAuthentication;
 import org.springframework.vault.client.VaultEndpoint;
 import org.springframework.vault.config.AbstractVaultConfiguration;
-import org.springframework.vault.core.VaultTemplate;
-import org.springframework.vault.support.VaultMount;
-import org.springframework.vault.support.VaultToken;
 
-import javax.annotation.Resource;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 配置类
  *
@@ -31,6 +25,9 @@ public class VaultConfiguration extends AbstractVaultConfiguration {
 
     @Value("${spring.application.name}")
     private String appCode;
+
+    private String roleId = "8caf0a8b-836a-fcc7-1bce-b0e07b98559e";
+    private String secretId = "a765cc39-f4e5-e879-aae1-f25e07e843a5";
 
 //    @Override
 //    public VaultTemplate vaultTemplate() {
@@ -58,7 +55,7 @@ public class VaultConfiguration extends AbstractVaultConfiguration {
     @Override
     public VaultEndpoint vaultEndpoint() {
         try {
-            return VaultEndpoint.from(new URI("http://localhost:8200"));
+            return VaultEndpoint.from(new URI("http://localhost:8200/iuap-key-manage/v1/"));
         } catch (URISyntaxException e) {
             LOGGER.error("初始化vault访问地址报错：", e);
             return null;
@@ -69,9 +66,11 @@ public class VaultConfiguration extends AbstractVaultConfiguration {
     public ClientAuthentication clientAuthentication() {
         AppRoleAuthenticationOptions options = AppRoleAuthenticationOptions
                 .builder()
-                .roleId(AppRoleAuthenticationOptions.RoleId.provided("8caf0a8b-836a-fcc7-1bce-b0e07b98559e"))
-                .secretId(AppRoleAuthenticationOptions.SecretId.provided("d3757687-7443-1bf5-a715-1c45f9d8b329"))
+                .roleId(AppRoleAuthenticationOptions.RoleId.provided(roleId))
+                .secretId(AppRoleAuthenticationOptions.SecretId.provided(secretId))
                 .build();
-        return new AppRoleAuthentication(options, restOperations());
+        return new MyAppRoleAuthentication(options, restOperations(), appCode, roleId, secretId);
     }
+
+
 }

@@ -20,7 +20,7 @@ public class VaultWeb {
     @Resource
     private VaultTemplate vaultTemplate;
 
-    private final static String DEFAULT_PATH = "yh_sm4";
+    private final static String DEFAULT_PATH = "kms-sm4";
     private final static String DEFAULT_PATH_2 = "tenant_id";
 
     @GetMapping("/get")
