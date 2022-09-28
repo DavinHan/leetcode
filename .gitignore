@@ -4,3 +4,4 @@
 /sc-test/sc-test.iml
 /leetcode-training/target/
 /vault-demo/target/classes/
+*.iml
