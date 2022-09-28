@@ -18,8 +18,8 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.hyan</groupId>
-    <artifactId>test</artifactId>
+    <groupId>com.hyan.test</groupId>
+    <artifactId>hyan-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 

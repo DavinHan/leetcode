@@ -5,3 +5,6 @@
 /leetcode-training/target/
 /vault-demo/target/classes/
 *.iml
+/sc-test/hyan-zuul-diy-gateway/target/
+/jmh-demo/target/
+/.idea/
