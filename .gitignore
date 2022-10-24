@@ -8,3 +8,5 @@
 /sc-test/hyan-zuul-diy-gateway/target/
 /jmh-demo/target/
 /.idea/
+/rpc-hyan/.gradle/
+/rpc-hyan/build/
