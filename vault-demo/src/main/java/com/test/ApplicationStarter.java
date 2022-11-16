@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * 启动类
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Bean;
  * @author yanhanf
  */
 @SpringBootApplication
+@EnableScheduling
 public class ApplicationStarter extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
