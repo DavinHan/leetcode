@@ -49,9 +49,9 @@ public class HealthWeb {
         return selectors.toString();
     }
 
-    @Scheduled(fixedDelay = 1000L)
-    public void clear() {
-        selectors.removeIf(s -> s.getDelay(TimeUnit.SECONDS) < 0);
-        System.out.println("当前selectors队列为>>>>" + selectors);
-    }
+//    @Scheduled(fixedDelay = 1000L)
+//    public void clear() {
+//        selectors.removeIf(s -> s.getDelay(TimeUnit.SECONDS) < 0);
+//        System.out.println("当前selectors队列为>>>>" + selectors);
+//    }
 }
