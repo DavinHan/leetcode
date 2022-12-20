@@ -9,7 +9,6 @@
         <module>sc-test</module>
         <module>spi-demo</module>
         <module>vault-demo</module>
-        <module>rpc-hyan</module>
     </modules>
 
     <parent>
