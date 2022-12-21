@@ -1,11 +1,16 @@
 package com.test.web;
 
 import com.test.selector.MySelector;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.prometheus.PrometheusMeterRegistry;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.concurrent.DelayQueue;
@@ -25,6 +30,16 @@ public class HealthWeb {
     private final static String DEFAULT_NAME = "mySelector-";
     private final static AtomicInteger i = new AtomicInteger(0);
 
+    @Resource
+    private MeterRegistry registry;
+
+    private Counter counter;
+
+    @PostConstruct
+    public void init() {
+        counter = registry.counter("health_request_count", "method", "HealthWeb.health", "yanhan", "yanhan2");
+    }
+
     @GetMapping("/health")
     public String health(HttpServletRequest request) {
         Map<String, String> map = new HashMap<>();
@@ -33,6 +48,7 @@ public class HealthWeb {
         while(headerNames.hasMoreElements()) {
             map.put((key = headerNames.nextElement()), request.getHeader(key));
         }
+        counter.increment();
         return "ok,headers is :" + map.toString();
     }
 
