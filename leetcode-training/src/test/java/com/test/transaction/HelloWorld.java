@@ -1,6 +1,6 @@
 package com.test.transaction;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.transaction.annotation.Transactional;
 
 public class HelloWorld {
