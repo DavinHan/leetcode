@@ -10,11 +10,14 @@ public class WeakReferenceCache {
 
     @Test
     public void fun1() {
-        /*
-         * run with VmOptions -Xmx30M -Xms30M
-         */
         WeakReference<byte[]> cache = new WeakReference<>(new byte[1024 * 1024 * 10]);
         System.out.println(cache.get());
+        System.gc();
+        try {
+            Thread.sleep(0);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         byte[] a = new byte[1024 * 1024 * 12];
         System.out.println(cache.get());
     }
@@ -22,12 +25,15 @@ public class WeakReferenceCache {
 
     @Test
     public void fun2() {
-        /*
-         * run with VmOptions -Xmx30M -Xms30M
-         */
         WeakReference<Map<String, byte[]>> cache = new WeakReference<>(new HashMap<>());
         cache.get().put("1", new byte[1024 * 1024 * 10]);
         System.out.println(cache.get());
+        System.gc();
+        try {
+            Thread.sleep(0);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         byte[] a = new byte[1024 * 1024 * 12];
         System.out.println(cache.get());
     }
