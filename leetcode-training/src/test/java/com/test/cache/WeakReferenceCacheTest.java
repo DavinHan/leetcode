@@ -6,7 +6,7 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WeakReferenceCache {
+public class WeakReferenceCacheTest {
 
     @Test
     public void fun1() {

@@ -6,7 +6,7 @@ import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SoftReferenceCache {
+public class SoftReferenceCacheTest {
 
     @Test
     public void fun1() {
