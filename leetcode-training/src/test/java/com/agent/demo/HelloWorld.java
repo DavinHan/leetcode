@@ -17,7 +17,7 @@ public class HelloWorld {
             sumMillisTime += mockCPUConsuming2();
         }
         System.out.println( sumMillisTime / 10 + " ms:mock cpu consuming exit");
-
+        mockTimeConsuming();
     }
 
     public static void mockTimeConsuming(){

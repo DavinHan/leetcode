@@ -15,15 +15,23 @@ public class HasPathSum {
         if(root == null) {
             return false;
         }
-        return targetSum == countPathSum(root, targetSum, root.val);
+        return countPathSum(root, targetSum, 0);
     }
 
-    public int countPathSum(TreeNode r, int targetSum, int tmp) {
-        int t = tmp;
-        if(r.right == null && r.left == null && t == targetSum) {
-            return t;
+    public boolean countPathSum(TreeNode r, int targetSum, int tmp) {
+        tmp = tmp + r.val;
+        if (r.left == null && r.right == null && tmp == targetSum) {
+            return true;
         } else {
-            return 0;
+            if (r.left != null) {
+                if (countPathSum(r.left, targetSum, tmp)) {
+                    return true;
+                }
+            }
+            if (r.right != null) {
+                return countPathSum(r.right, targetSum, tmp);
+            }
+            return false;
         }
     }
 
@@ -32,6 +40,7 @@ public class HasPathSum {
         System.out.println("target is true, and test is "
                 + h.hasPathSum(TreeNode.buildTree(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1}), 22));
         System.out.println("target is false, and test is " + h.hasPathSum(TreeNode.buildTree(new Integer[]{1, 2, 3}), 5));
+        System.out.println("target is false, and test is " + h.hasPathSum(TreeNode.buildTree(new Integer[]{1, 2}), 0));
         System.out.println("target is false, and test is " + h.hasPathSum(TreeNode.buildTree(new Integer[]{}), 0));
     }
 }
