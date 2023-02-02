@@ -9,6 +9,7 @@
         <module>sc-test</module>
         <module>spi-demo</module>
         <module>vault-demo</module>
+        <module>maven-mojo-test</module>
     </modules>
 
     <parent>
