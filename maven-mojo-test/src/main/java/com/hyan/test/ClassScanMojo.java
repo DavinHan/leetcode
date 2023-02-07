@@ -2,6 +2,8 @@ package com.hyan.test;
 
 import com.google.common.collect.Lists;
 import com.hyan.test.scan.MyClassVisitor;
+import com.hyan.test.scan.TestUtilAdapter;
+import org.apache.commons.io.IOUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
@@ -17,13 +19,14 @@ import org.apache.maven.project.ProjectBuildingRequest;
 import org.apache.maven.shared.transfer.artifact.resolve.ArtifactResolver;
 import org.apache.maven.shared.transfer.artifact.resolve.ArtifactResolverException;
 import org.apache.maven.shared.transfer.artifact.resolve.ArtifactResult;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.Type;
+import org.objectweb.asm.*;
 import org.objectweb.asm.tree.AnnotationNode;
 
 import java.io.*;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -50,6 +53,7 @@ public class ClassScanMojo extends AbstractMojo {
     }
 
     private void resolverDependency(Artifact artifact) {
+        Map<String, String> map = new HashMap<>();
         try {
             ProjectBuildingRequest request = new DefaultProjectBuildingRequest(session.getProjectBuildingRequest());
             ArtifactResult result = artifactResolver.resolveArtifact(request, artifact);
@@ -73,7 +77,7 @@ public class ClassScanMojo extends AbstractMojo {
                                     String annotationName = type.getClassName();
                                     if(annotationNames.contains(annotationName)) {
                                         String className = reader.getClassName().replace('/', '.').replace('\\', '.');
-                                        System.out.println(className + ", " + annotationName);
+                                        map.put(className, annotationName);
                                     }
                                 });
                             }
@@ -83,6 +87,33 @@ public class ClassScanMojo extends AbstractMojo {
             }
         } catch (ArtifactResolverException | IOException e) {
             throw new RuntimeException(e);
+        }
+
+//        try {
+//            TestUtilAdapter.modifyClass(project.getCompileSourceRoots().get(0) + "/com/test/utils/TestUtil.class", map);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        byte[] dump = TestUtilAdapter.dump(map);
+
+        File parentPath = new File(project.getCompileSourceRoots().get(0) + "/com/test/utils/");
+        if(!parentPath.exists()) {
+            parentPath.mkdirs();
+        }
+        File file = new File(project.getCompileSourceRoots().get(0) + "/com/test/utils/TestUtil.class");
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try (FileOutputStream fis = new FileOutputStream(file)) {
+            IOUtils.write(dump, fis);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
