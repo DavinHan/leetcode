@@ -21,8 +21,8 @@ public class TreeNode {
     }
 
     /**
-     * 层序输出
-     * @return [层序输出]
+     * 前序输出
+     * @return [前序输出]
      */
     @Override
     public String toString() {
