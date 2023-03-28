@@ -7,8 +7,19 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class FilePathTest {
+
+    @Test
+    public void test1() {
+        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+        lock.writeLock().lock();
+        lock.writeLock().unlock();
+
+        lock.readLock().lock();
+        lock.readLock().unlock();
+    }
 
     @Test
     public void test() throws URISyntaxException {
