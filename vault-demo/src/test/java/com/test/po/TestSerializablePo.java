@@ -11,12 +11,17 @@ public class TestSerializablePo implements Serializable {
     private transient String c;
     private final transient String d;
 
+    public TestSerializablePo() {
+        d = "asd";
+    }
+
     public TestSerializablePo(String a, String c, String d) {
         this.a = a;
         this.c = c;
         this.d = d;
     }
 
+    @MyTestAnnotation
     public static void setB(String b) {
         TestSerializablePo.b = b;
     }
