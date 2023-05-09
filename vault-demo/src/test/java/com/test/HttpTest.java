@@ -2,6 +2,7 @@ package com.test;
 
 import com.test.po.TestSerializablePo;
 import com.test.po.TestSerializablePo2;
+import com.test.po.TestSerializablePo3;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.io.DefaultResourceLoader;
@@ -95,11 +96,34 @@ public class HttpTest {
     }
 
     @Test
+    public void test64() {
+        try {
+            Thread.currentThread().getContextClassLoader().loadClass("com.test.po.TestSerializablePo3");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        TestSerializablePo3 p = new TestSerializablePo3();
+        try {
+            Thread.currentThread().getContextClassLoader().loadClass("com.test.po.TestSerializablePo3");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void test3() {
         Set<String> set = new LinkedHashSet<>();
         set.add("qwe");
         set.add("123");
         set.add("zxc");
         System.out.println(set);
+    }
+
+    @Test
+    public void test56() {
+        String a = "a";
+        if (a.equalsIgnoreCase(null)) {
+            System.out.println("bb:");
+        }
     }
 }
