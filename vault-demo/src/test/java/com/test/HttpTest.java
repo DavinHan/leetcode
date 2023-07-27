@@ -117,6 +117,9 @@ public class HttpTest {
         set.add("123");
         set.add("zxc");
         System.out.println(set);
+
+        System.out.println(">>>>" + set.stream().allMatch(a -> a.equals("123")));
+        System.out.println(">>>>" + set.stream().anyMatch(a -> a.equals("123")));
     }
 
     @Test
