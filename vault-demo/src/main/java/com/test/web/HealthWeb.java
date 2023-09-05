@@ -3,12 +3,7 @@ package com.test.web;
 import com.test.selector.MySelector;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.prometheus.PrometheusMeterRegistry;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
@@ -25,7 +20,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author yanhanf
  */
 @RestController
-@Api(value = "web接口", tags = {"用户接口"})
 public class HealthWeb {
 
     private final static DelayQueue<MySelector> selectors = new DelayQueue<>();
@@ -43,7 +37,6 @@ public class HealthWeb {
         counter = registry.counter("health_request_count", "method", "HealthWeb.health", "yanhan", "yanhan2");
     }
 
-    @ApiOperation("健康检查")
     @GetMapping("/health")
     public String health(HttpServletRequest request) {
         Map<String, String> map = new HashMap<>();
@@ -53,7 +46,7 @@ public class HealthWeb {
             map.put((key = headerNames.nextElement()), request.getHeader(key));
         }
         counter.increment();
-        return "ok,headers is :" + map.toString();
+        return "ok,headers is :" + map;
     }
 
     @GetMapping("/put")
