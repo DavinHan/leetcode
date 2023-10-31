@@ -2,9 +2,9 @@ package com.hyan.demo.service;
 
 import com.hyan.demo.dao.UserDao;
 import com.hyan.demo.entity.User;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**

@@ -3,7 +3,9 @@ package com.hyan.test.scan;
 import org.apache.commons.io.IOUtils;
 import org.objectweb.asm.*;
 
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
@@ -28,6 +30,9 @@ public class TestUtilAdapter extends ClassVisitor implements Opcodes {
             }
         }, 0);
 
+        try (FileWriter fw = new FileWriter(fileName)) {
+
+        }
         IOUtils.write(classWriter.toByteArray(), new FileOutputStream(fileName));
     }
     public static byte[] dump(Map<String, String> params) {

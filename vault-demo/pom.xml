@@ -17,8 +17,8 @@
     <packaging>war</packaging>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <swagger.version>3.0.0</swagger.version>
     </properties>
 
@@ -87,34 +87,25 @@
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
-            <version>1.7.12</version>
+            <version>1.11.2</version>
         </dependency>
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-plugin-demo</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <groupId>org.example</groupId>
-                <configuration>
-                    <version>${project.version}</version>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-mojo-test</artifactId>
-                <groupId>com.hyan.test</groupId>
-                <version>1.0-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <artifactId>maven-mojo-test</artifactId>-->
+<!--                <groupId>com.hyan.test</groupId>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>build</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 </project>

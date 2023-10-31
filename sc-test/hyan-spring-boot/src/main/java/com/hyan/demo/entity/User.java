@@ -1,6 +1,7 @@
 package com.hyan.demo.entity;
 
-import javax.persistence.*;
+
+import jakarta.persistence.*;
 
 /**
  * User
