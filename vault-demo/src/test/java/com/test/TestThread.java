@@ -1,16 +1,19 @@
 package com.test;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class TestThread {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestThread.class);
 
     @Test
     public void fun() throws InterruptedException {
@@ -84,5 +87,35 @@ public class TestThread {
     @Test
     public void fun1() {
         System.out.println(UUID.randomUUID());
+    }
+
+    @Test
+    public void fun2() throws ExecutionException, InterruptedException {
+        ThreadLocal<String> t = new ThreadLocal<>();
+        t.set("hello");
+        CompletableFuture<Object> ok = CompletableFuture.supplyAsync(() -> {
+            LOGGER.error(t.get());
+            t.set("chen");
+            LOGGER.error(t.get());
+            Arrays.stream(Thread.currentThread().getStackTrace()).forEach(e -> LOGGER.error(e.toString()));
+            LOGGER.error("1:" + Thread.currentThread().getId());
+            LOGGER.error("---------------------------------------");
+            return "ok";
+        }).thenApply((fn) -> {
+            LOGGER.error("==========================================");
+            LOGGER.error(fn);
+            LOGGER.error(t.get());
+            Arrays.stream(Thread.currentThread().getStackTrace()).forEach(e -> LOGGER.error(e.toString()));
+            LOGGER.error("2:" + Thread.currentThread().getId());
+            t.set("ai");
+            LOGGER.error(t.get());
+            return "jok";
+        });
+        LOGGER.error("主" + t.get());
+        LOGGER.error(ok.get().toString());
+    }
+
+    public void stackFun() {
+
     }
 }
