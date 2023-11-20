@@ -1,6 +1,7 @@
 package com.test.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -19,7 +20,8 @@ public class BConfig {
 //        return new RealBean("B");
 //    }
 //
-    @Bean
+
+    @Bean("${b.bean.name}")
     public SecondBean secondBean(RealBean r) {
         return new SecondBean(r);
     }
